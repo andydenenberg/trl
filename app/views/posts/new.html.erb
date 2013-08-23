@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="span10 offset1">
+	<% if @type_is == 'News' %>
+		<h3>New Technical Reference Document</h3>
+	<% else %>
+		<h3>New Glossary Term</h3>
+	<% end %>
+  </div>
+</div>
+
+<%= render 'form' %>
+

@@ -1,0 +1,32 @@
+<div class="row">
+  <div class='span8 offset1'>
+		<% if @type_is == 'News' %>
+			<h3>Technical Reference Library</h3>
+			<h4>100 SERIES - GENERAL</h4>
+			
+		<% else %>
+			<h3>Structural Waterproofing Glossary</h3>
+		<% end %>
+ 
+		<% if @type_is == 'Discussion' %>
+		  <%= link_to 'Add Glossary Item', new_post_path(:type_is => 'Discussion'), :class => 'btn btn-mini' %>
+		<% elsif @type_is == 'News' %>
+		  <%= link_to 'Add Document', new_post_path(:type_is => 'News'), :class => 'btn btn-mini' %>
+		<% else %>
+		  <%= link_to 'Add Glossary Item', new_post_path(:type_is => 'Discussion'), :class => 'btn btn-mini' %>
+		  <%= link_to 'Add Document', new_post_path(:type_is => 'News'), :class => 'btn btn-mini' %>		
+		<% end %>	
+  </div>
+</div>
+<br>
+
+<div id='table'>
+	<%= render 'tech_docs' %>
+</div>
+
+
+<br />
+
+
+
+
