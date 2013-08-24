@@ -1,7 +1,20 @@
 source 'https://rubygems.org'
-gem 'rails', '3.2.8'
-gem 'sqlite3'
-gem 'mysql2'
+gem 'rails', '3.2.11'
+
+#gem 'sqlite3'
+#gem 'mysql2'
+
+  gem 'therubyracer-heroku', :group => :production
+    group :production do
+    gem 'pg'
+  end
+#  
+  group :development, :test do
+   gem 'sqlite3'
+   gem 'mysql2'
+   gem 'pg'
+  end
+
 gem 'paperclip'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
