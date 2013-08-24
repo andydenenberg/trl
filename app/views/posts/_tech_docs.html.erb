@@ -1,20 +1,26 @@
-		<table class='table table-condensed'>
+		<table class='table table-condensed table-bordered table-striped'>
+		<thead>
+			<tr>
+			<th>Document</th>
+			<th>Description</th>
+			<th>Category</th>
+			<th>Action</th>
+		<tr>
+		</thead>
 		<% @posts.each do |post| %>
 			<% post.body.length > 300 ? body = post.body[0..300].html_safe : body = post.body.html_safe %>
 				<tr>
 					<td class='span2'>		
 							<% if post.attachments.count > 0 %>
 								<% post.attachments.each_with_index do |attach| %>
-									<% if !attach.url.blank? %>
-										<%= link_to attach.url, "http://" + attach.url, :target => '_blank' %>
-									<% end %>
 									<% if !attach.image.url.include?('missing.png') %>
-										<b><%= link_to post.title, attach.image.url, :target => '_blank' %></b>
+										<p><b><%= link_to image_tag('icon-pdf.png') + post.title, attach.image.url, :target => '_blank' %></b>										
 									<% end %>						
 								<% end %> 
 							<% end %>						
 					</td>
 					<td><%= body %></td>
+					<td><b><%= post.category %></b></td>
 					<td><b><%= link_to 'Edit', post_path(post, :type_is => @type_is) %></b></td>
 				</tr>
 		<% end %>
