@@ -3,13 +3,12 @@
 <div class="row">
   <div class='span8 offset1'>
 		<% if @post.type_is == 'Discussion' %>
-		  <%= link_to 'New Glossary Term', new_post_path(:item_type => 'Discussion'), :class => 'btn btn-mini' %>
+		  <%= link_to 'New Glossary Term', new_post_path(:type_is => 'Discussion'), :class => 'btn btn-mini' %>
 		<% else %>
-		  <%= link_to 'New Technical Reference Document', new_post_path(:item_type => 'News'), :class => 'btn btn-mini' %>
+		  <%= link_to 'New Technical Reference Document', new_post_path(:type_is => 'News'), :class => 'btn btn-mini' %>
 		<% end %>	
   </div>
 </div>
 <br>
 
 <%= render 'show' %>
-
