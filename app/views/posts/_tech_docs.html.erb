@@ -1,10 +1,13 @@
-		<table class='table table-condensed table-bordered table-striped'>
+
+<table class='table table-condensed table-bordered table-striped'>
 		<thead>
 			<tr>
 			<th>Document</th>
 			<th>Description</th>
 			<th>Category</th>
-			<th>Action</th>
+			<% if current_user.roles.first.name == 'admin' %>		
+				<th>Action</th>
+			<% end %>
 		<tr>
 		</thead>
 		<% @posts.each do |post| %>
@@ -21,7 +24,10 @@
 					</td>
 					<td><%= body %></td>
 					<td><b><%= post.category %></b></td>
-					<td><b><%= link_to 'Edit', post_path(post, :type_is => @type_is) %></b></td>
+					
+					<% if current_user.roles.first.name == 'admin' %>		
+						<td><b><%= link_to 'Edit', post_path(post, :type_is => @type_is) %></b></td>
+					<% end %>
 				</tr>
 		<% end %>
 		</table>

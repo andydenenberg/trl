@@ -26,16 +26,10 @@
 	
 	<div class='span5'>
 		<div class='introbox'>
-			<h4><%= link_to 'Structural Waterproofing Glossary', posts_path(:type_is => 'Discussion') %></h4>
-			<% @news.each do |post| %>
-	    	<b><em style='font-size:16px;'><%= link_to post.title, post_path(post, :type_is => 'Discussion') %></em></b>
-	    	<p><%= post.attachments.first.description.html_safe %>
-			   <code><%= link_to 'Read Item', post_path(post, :type_is => 'Discussion') %></code> |
- 					 <%= post.created_at.strftime('%b-%d-%Y') %></p>
-	
-	<hr>
-			<% end %>
-				<%= will_paginate @news, :class => 'pagination pagination-right pagination-small'%>
+			<h4><%= link_to 'Structural Waterproofing Glossary', posts_path(:type_is => 'Discussion') %></h4><br>
+	    	<p>Learn about industry specific terms.</p><br>
+			<p><%= link_to 'Lookup words in Glossary &raquo;'.html_safe, posts_path(:type_is => 'Dicussion') , :class => "btn btn-small" %></p>
+
 			
 		</div>		    
 	</div>
