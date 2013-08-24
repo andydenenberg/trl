@@ -69,19 +69,24 @@ Stc::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"  
 
-     mail_cred = YAML.load(File.read('../config.yml'))   
-
+  name =  ENV['SENDGRID_USERNAME']
+  pword = ENV['SENDGRID_PASSWORD']
+  if File.exist?('../config.yml')
+     mail_cred = YAML.load(File.read('../config.yml'))  
+     name =  mail_cred['user_name']
+     pword = mail_cred['password']
+  end
+     
      config.action_mailer.smtp_settings = {
 
-    :user_name =>  mail_cred['user_name'],
-    :password => mail_cred['password'],
+    :user_name =>  name,
+    :password => pword,
     
-    :domain => "stantallcampaign.com",
+    :domain => "denenberg.net",
     :address => "smtp.sendgrid.net",
     :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true
-
    }
 
 
