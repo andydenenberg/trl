@@ -15,12 +15,10 @@ class PostsController < ApplicationController
     
   def index
     if params[:type_is] == 'Discussions & News' or params[:type_is] == nil
-      type_is = '' 
+      @posts = Post.all.paginate(:page => params[:page], :per_page => 5).order('created_at desc')
     else 
-      type_is = 'type_is = "' + params[:type_is] + '"' 
+      @posts = Post.where(:type_is => params[:type_is]).paginate(:page => params[:page], :per_page => 5).order('created_at desc')
     end
-    @type_is = params[:type_is]
-    @posts = Post.where(type_is).paginate(:page => params[:page], :per_page => 5).order('created_at desc')
     
   end
 
