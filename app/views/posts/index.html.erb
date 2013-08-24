@@ -3,9 +3,11 @@
 		<% if @type_is == 'News' %>
 			<h3>Technical Reference Library</h3>
 			<h4>100 SERIES - GENERAL</h4>
+			<%= render 'tech_docs' %>
 			
 		<% else %>
 			<h3>Structural Waterproofing Glossary</h3>
+			<%= render 'glossary' %>
 		<% end %>
  
 		<% if @type_is == 'Discussion' %>
@@ -20,9 +22,6 @@
 </div>
 <br>
 
-<div id='table'>
-	<%= render 'tech_docs' %>
-</div>
 
 
 <br />

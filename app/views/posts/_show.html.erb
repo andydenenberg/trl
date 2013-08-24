@@ -3,8 +3,8 @@
   <div class="span10 offset1">
 	  <div class='blank_box'>
 		
-		<div class='lead'><%= @post.body.html_safe %></div>
-<p style='font-size:16px;line-height:120%;'><%= link_to @post.title, @post %></p>
+		<div class='lead'><%= link_to @post.title, @post %></div>
+		<p style='font-size:16px;line-height:120%;'><%= @post.body.html_safe %></p><br>
 
 <% if @post.attachments.count > 0 %>
 <% @post.attachments.each_with_index do |attach| %>
@@ -27,7 +27,7 @@
 
 	<div class='row pull-right'>
 		<% if current_user.id == @post.user_id %>
-			<%= link_to_function 'Add Attachment', "AddAttachment(" + @post.id.to_s + "); return false", :class => 'btn btn-mini btn-primary' %>			<%= link_to 'Edit', edit_post_path(@post, :type_is => @type_is), :class => 'btn btn-mini' %>
+			<%= link_to 'Edit', edit_post_path(@post, :type_is => @type_is), :class => 'btn btn-mini' %>
 			<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-warning' %>
 		<% end %>
 		

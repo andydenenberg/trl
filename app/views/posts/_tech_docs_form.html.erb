@@ -15,8 +15,8 @@
 <%= f.hidden_field :type_is, :value => @type_is %>
 
 		</div>		
-		<label for="stackedSelect">Message</label>
-	    <%= f.text_area :body , :class => "input textarea span8", :rows => 5  %>
+		<label for="stackedSelect">Description of Document</label>
+	    <%= f.text_area :body , :class => "input textarea span6", :rows => 4  %>
 		<%= f.hidden_field :user_id , :value => current_user.id %>
 	</div>
 
@@ -25,10 +25,12 @@
 		<div class='form-box'>
 		<div class='row'>
 			<div class='span4'>
+				
 				<% if !attach.object.new_record? %>
+			<label for="stackedSelect">Current File: <b><%= attach.object.image_file_name %></b></label>
 				<label class="checkbox inline">
 			<!--- attach.check_box :_destroy, {:checked => attach.object.persisted?}, '0', '1' %>Save Attachment? ---->
-					<%= attach.check_box :_destroy %><b>Delete Attachment <%= i ; i += 1 %></b>					
+					<%= attach.check_box :_destroy %><b>Delete File </b>					
 				</label>
 				<% else %>
 				<label for="stackedSelect"><b>Attachment</b></label>
@@ -38,13 +40,6 @@
 		<br>
 		<div class='row'>
 			<div class='span4'>
-					<label for="stackedSelect">URL</label>
-					<%= attach.text_field :url , :class => "input span3"%>
-					<label for="stackedSelect">Description</label>
-					<%= attach.text_field :description , :class => "input span8" %>
-			</div>
-			<div class='span4'>
-					<label for="stackedSelect">Current File: <b><%= attach.object.image_file_name %></b></label><br>
 					<%= attach.file_field :image %>
 			</div>
 		</div>

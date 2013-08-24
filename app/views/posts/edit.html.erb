@@ -8,5 +8,9 @@
   </div>
 </div>
 
-<%= render 'form' %>
+<% if @post.type_is == 'News' %>
+	<%= render 'tech_docs_form' %>
+<% else %>
+	<%= render 'glossary_form' %>
+<% end %>
 
