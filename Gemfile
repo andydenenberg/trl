@@ -16,6 +16,8 @@ gem 'rails', '3.2.11'
    gem 'pg'
   end
 
+require 'yaml'
+gem 'aws-sdk'
 gem 'paperclip'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
