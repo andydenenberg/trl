@@ -1,16 +1,3 @@
-#  class Attachment < ActiveRecord::Base
-#    attr_accessible :post_id, :url, :image, :description
-#    has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-#    belongs_to :post
-#    
-#    before_post_process :image?  # skip post_process if not image file
-#    def image?
-#      !(image_content_type =~ /^image.*/).nil?
-#    end  
-#  end
-
-
-
 class Attachment < ActiveRecord::Base
   config = File.exist?('../../config.yml') ? YAML.load(File.read('../../config.yml')) : nil
   key =  ENV['S3_KEY']

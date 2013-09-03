@@ -2,9 +2,9 @@ module PostsHelper
   
   def type_color(type_is)
     color = 'label'
-    if type_is == 'News'
+    if type_is == 'Documents'
       color = 'label label-info'
-    elsif type_is == 'Discussion'
+    elsif type_is == 'Glossary'
       color = 'label'
     end  
     return color
