@@ -1,13 +1,13 @@
-set :application, "stc"
-set :repository,  "git@github.com:andydenenberg/stc.git"
+set :application, "trl"
+set :repository,  "git@github.com:andydenenberg/trl.git"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "stc.ospreypointcap.com"                          # Your HTTP server, Apache/etc
-role :app, "stc.ospreypointcap.com"                          # This may be the same as your `Web` server
-role :db,  "stc.ospreypointcap.com", :primary => true # This is where Rails migrations will run
-role :db,  "stc.ospreypointcap.com"
+role :web, "trl.ospreypointcap.com"                          # Your HTTP server, Apache/etc
+role :app, "trl.ospreypointcap.com"                          # This may be the same as your `Web` server
+role :db,  "trl.ospreypointcap.com", :primary => true # This is where Rails migrations will run
+role :db,  "trl.ospreypointcap.com"
 
 set :user, "ubuntu"
 set :deploy_to, "/home/ubuntu/rails/#{application}"

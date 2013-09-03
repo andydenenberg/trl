@@ -1,4 +1,4 @@
-Stc::Application.routes.draw do
+Trl::Application.routes.draw do
   resources :attachments 
 
   resources :comments do
