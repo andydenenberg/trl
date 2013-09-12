@@ -22,8 +22,8 @@ Trl::Application.routes.draw do
   devise_for :users
   resources :users
   
-  get 'home/welcome' => 'home#welcome', :as => :welcome
-  get 'home/index' => 'home#index', :as => :index  
+#  get 'home/welcome' => 'home#welcome', :as => :welcome
+#  get 'home/index' => 'home#index', :as => :index  
   get 'home/start' => 'home#start', :as => :start
 
 end

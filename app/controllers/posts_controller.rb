@@ -14,13 +14,31 @@ class PostsController < ApplicationController
   end
     
   def index
+    @categories = [ 'All Categories',
+                    '100 SERIES - GENERAL', '200 SERIES - APPLICATION & INSTALLATION',
+                    '300 SERIES - TESTING', '400 SERIES - CERTFICATIONS & APPROVALS',
+                    '500 SERIES - PRODUCT COMPARISONS', '600 SERIES - ARTICLES & WHITE PAPERS' ]    
     @type_is = params[:type_is]
+    category = params[:category] ||= 'All Categories'
+    search_criteria = params[:search_criteria]
+    
     if params[:type_is] == 'Glossary & Documents' or params[:type_is] == nil
       @posts = Post.paginate(:page => params[:page], :per_page => 5).order('created_at desc')
-    else 
+    elsif params[:type_is] == 'Documents'
+      if params[:category] == 'All Categories'
+        @posts = Post.where(:type_is => params[:type_is])    
+      else
+        @posts = Post.where(:type_is => params[:type_is]).where('category = ?', category)    
+      end
+      if search_criteria
+        @posts = @posts.where('body LIKE ?', "%#{search_criteria}%" )
+      end
+      @posts = @posts.paginate(:page => params[:page], :per_page => 5).order('created_at desc')
+      
+    else # Glossary
       @posts = Post.where(:type_is => params[:type_is]).paginate(:page => params[:page], :per_page => 5).order('created_at desc')
     end
-    
+
   end
 
   # GET /posts/1

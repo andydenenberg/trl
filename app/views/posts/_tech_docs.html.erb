@@ -1,3 +1,4 @@
+<% if @posts.length > 0 %>
 
 <table class='table table-condensed table-bordered table-striped'>
 		<thead>
@@ -33,3 +34,8 @@
 		</table>
 	<br><br>		
 <%= will_paginate @posts, :class => 'pagination pagination-centered pagination-small', :style => 'vertical-align:middle;'%>
+
+<% else %>
+No Documents Found.
+<% end %>
+
