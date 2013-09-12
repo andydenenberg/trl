@@ -31,7 +31,7 @@ class PostsController < ApplicationController
         @posts = Post.where(:type_is => params[:type_is]).where('category = ?', category)    
       end
       if search_criteria
-        @posts = @posts.where('body LIKE ?', "%#{search_criteria}%" )
+        @posts = @posts.where('lower(body) LIKE ?', "%#{search_criteria.downcase}%" )
       end
       @posts = @posts.paginate(:page => params[:page], :per_page => 5).order('created_at desc')
       
