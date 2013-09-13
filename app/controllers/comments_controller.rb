@@ -91,7 +91,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @post = Post.find(@comment.post_id)
     @comment.destroy
-    redirect_to @post
+    redirect_to @comment
     
 
 #    respond_to do |format|
