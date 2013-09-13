@@ -30,6 +30,12 @@ $(function () {
                 $.get(this.href, {category:Category, type_is:Type_is, search_criteria:Search_criteria}, null, 'script');
                 return false;
         });
+        $('#search_in_glossary').click(function () {
+		   Search_criteria = document.getElementById('search_criteria').value ;
+		   Type_is = 'Glossary' ;
+                $.get(this.href, {type_is:Type_is, search_criteria:Search_criteria}, null, 'script');
+                return false;
+        });
 
 });
 

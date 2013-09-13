@@ -6,29 +6,34 @@
 					<h3>Technical Reference Library</h3>
 			
 			<div class="navbar">
-			              <div class="navbar-inner">
-			                <form class="navbar-form pull-left">				
-			                  <input id='search_criteria' type="text" class="span2">
-			                  <button id='search_by_description' class="btn">Search in Description</button>
-							<%= select_tag :category , options_for_select(@categories)  %>
-			                </form>
-			              </div>
-			            </div>
+	              <div class="navbar-inner">
+	                <form class="navbar-form pull-left">				
+	                  <input id='search_criteria' type="text" class="span2">
+	                  <button id='search_by_description' class="btn">Search in Description</button>
+					<%= select_tag :category , options_for_select(@categories)  %>
+	                </form>
+	              </div>
+			</div>
 			
-				<div id='table'>
-					<%= render 'tech_docs' %>
-				</div>
-				
-							
-							<% if current_user.roles.first.name == 'admin' %>
-							<%= link_to 'Add Document', new_post_path(:type_is => 'Documents'), :class => 'btn btn-mini' %>
-							<% end %>
-							
-				
-			
+			<div id='documents_data'><%= render 'tech_docs' %></div>
+											
+			<% if current_user.roles.first.name == 'admin' %>
+			<%= link_to 'Add Document', new_post_path(:type_is => 'Documents'), :class => 'btn btn-mini' %>
+			<% end %>
+										
 		<% else %>
 			<h3>Structural Waterproofing Glossary</h3>
-			<%= render 'glossary' %>
+			
+			<div class="navbar">
+	              <div class="navbar-inner">
+	                <form class="navbar-form pull-left">				
+	                  <input id='search_criteria' type="text" class="span2">
+	                  <button id='search_in_glossary' class="btn">Search in Description</button>
+	                </form>
+	              </div>
+			</div>
+			
+			<div id='glossary_data'><%= render 'glossary' %></div>
 		<% end %>
  
 	<% if current_user.roles.first.name == 'admin' %>
@@ -44,11 +49,7 @@
 
   </div>
 </div>
-<br>
-
-
-
-<br />
+<br><br>
 
 
 

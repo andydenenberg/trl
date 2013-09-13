@@ -1,14 +1,27 @@
+<% (0..25).each do |char|  %>
 
+	<% letter = (char+65).chr %>	
+	<% words = @posts.select_type('Glossary').where('title like ?', "#{letter}%") %>
+	<% if words.length > 0 %>
+		<h4><%= letter %></h4>
 		<table class='table table-condensed'>
-		<% @posts.each do |post| %>
+		<% words.each do |post| %>
 			<% post.body.length > 300 ? body = post.body[0..300].html_safe : body = post.body.html_safe %>
 				<tr>
 					<td class='span2'><b><%= post.title %></b></td>
 					<td><%= body %></td>
-					<td><b><%= link_to 'Edit', post_path(post, :type_is => @type_is) %></b></td>
+					<td>
+						<% if current_user.roles.first.name == 'admin' %>		
+							<b><%= link_to 'Edit', post_path(post, :type_is => @type_is) %></b>
+						<% end %>
+					</td>
 				</tr>
 		<% end %>
 		</table>
-	<br><br>		
+	<% end %>
+		
+<% end %>
+
+<br><br>		
 <%= will_paginate @posts, :class => 'pagination pagination-centered pagination-small', :style => 'vertical-align:middle;'%>
 

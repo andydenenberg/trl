@@ -5,9 +5,33 @@ class Post < ActiveRecord::Base
   has_one :user
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   accepts_nested_attributes_for :comments, :allow_destroy => true
+
+  def self.select_type(type)
+    case type 
+      when 'Glossary & Documents', nil
+        Post.scoped
+      else 
+        Post.where(:type_is => type)
+    end
+  end
   
-  def file_count(kind)
-        
+  def self.select_category(category)
+    case category
+      when 'All Categories', nil
+        self.scoped
+      else
+        self.where('category = ?', category)
+    end
+  end  
+  
+  def self.search(criteria)
+      criteria = criteria ||= ''
+      # postgres on Heroku is case sensitive so need to specify consistent lower case for wildcard search
+      self.where('lower(body) LIKE ?', "%#{criteria.downcase}%" )
+  end
+ 
+ 
+  def file_count(kind)        
     count = 0
     stash = [ ]
     case kind

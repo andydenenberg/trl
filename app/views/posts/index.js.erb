@@ -1,1 +1,6 @@
-$("#table").html("<%= escape_javascript(render("tech_docs")) %>");
+<% if @type_is == 'Documents' %>
+	$("#documents_data").html("<%= escape_javascript(render("tech_docs")) %>");
+<% else %>
+	$("#glossary_data").html("<%= escape_javascript(render("glossary")) %>");
+<% end %>
+
