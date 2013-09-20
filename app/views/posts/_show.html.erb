@@ -6,16 +6,6 @@
 		<div class='lead'><%= link_to @post.title, @post %></div>
 		<p style='font-size:16px;line-height:120%;'><%= @post.body.html_safe %></p><br>
 
-<% if @post.attachments.count > 0 %>
-	<% @post.attachments.each_with_index do |attach| %>
-		<% if !attach.url.blank? %>
-			<code>Link: <%= link_to attach.url, "http://" + attach.url, :target => '_blank' %></code>
-		<% end %>
-		<% if !attach.image.url.include?('missing.png') %>
-			<code>File: <%= link_to attach.image_file_name, attach.image.url, :target => '_blank' %></code>
-		<% end %>
-	<% end %> 
-<% end %>
 <br>
 	
 	
