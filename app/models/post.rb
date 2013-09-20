@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   has_many :attachments, :dependent => :destroy
-  attr_accessible :body, :title, :user_id, :type_is, :attachments_attributes, :comments_attributes, :category
+  attr_accessible :body, :title, :user_id, :type_is, :attachments_attributes, :comments_attributes, :category, :product
   has_many :comments, :dependent => :destroy
   has_one :user
   accepts_nested_attributes_for :attachments, :allow_destroy => true
@@ -17,13 +17,22 @@ class Post < ActiveRecord::Base
   
   def self.select_category(category)
     case category
-      when 'All Categories', nil
+      when 'ALL CATEGORIES', nil
         self.scoped
       else
         self.where('category = ?', category)
     end
   end  
   
+  def self.select_product(product)
+    case product
+      when 'ALL PRODUCTS', nil
+        self.scoped
+      else
+        self.where('product = ?', product)
+    end
+  end  
+
   def self.search(criteria)
       criteria = criteria ||= ''
       # postgres on Heroku is case sensitive so need to specify consistent lower case for wildcard search

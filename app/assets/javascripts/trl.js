@@ -19,8 +19,17 @@ $(function () {
         $('#category').change(function () {
 		   Search_criteria = document.getElementById('search_criteria').value ;
 		   Category = document.getElementById('category').value ;
+		   Product = document.getElementById('product').value ;
 		   Type_is = 'Documents' ;
-                $.get('/posts', {category:Category, type_is:Type_is, search_criteria:Search_criteria} , null, 'script');
+                $.get('/posts', {category:Category, product:Product, type_is:Type_is, search_criteria:Search_criteria} , null, 'script');
+                return false;
+        });
+        $('#product').change(function () {
+		   Search_criteria = document.getElementById('search_criteria').value ;
+		   Category = document.getElementById('category').value ;
+		   Product = document.getElementById('product').value ;
+		   Type_is = 'Documents' ;
+                $.get('/posts', {category:Category, product:Product, type_is:Type_is, search_criteria:Search_criteria} , null, 'script');
                 return false;
         });
         $('#search_by_description').click(function () {

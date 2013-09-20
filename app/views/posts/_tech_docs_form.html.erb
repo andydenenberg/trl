@@ -17,6 +17,8 @@
 		</div>		
 		<label for="stackedSelect">Category</label>
 		<%= f.select :category , categories  %>
+		<label for="stackedSelect">Product</label>
+		<%= f.select :product , products  %>
 		<label for="stackedSelect">Description of Document</label>
 	    <%= f.text_area :body , :class => "input textarea span6", :rows => 4  %>
 		<%= f.hidden_field :user_id , :value => current_user.id %>

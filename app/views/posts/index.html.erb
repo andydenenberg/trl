@@ -9,8 +9,9 @@
 	              <div class="navbar-inner">
 	                <form class="navbar-form pull-left">				
 	                  <input id='search_criteria' type="text" class="span2">
-	                  <button id='search_by_description' class="btn">Search in Description</button>
+	                  <button id='search_by_description' class="btn">SEARCH IN DESCRIPTION</button>
 					<%= select_tag :category , options_for_select(@categories)  %>
+					<%= select_tag :product , options_for_select(@products)  %>
 	                </form>
 	              </div>
 			</div>

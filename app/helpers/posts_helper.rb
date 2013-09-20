@@ -18,3 +18,8 @@ def categories
           '300 SERIES - TESTING', '400 SERIES - CERTFICATIONS & APPROVALS',
           '500 SERIES - PRODUCT COMPARISONS', '600 SERIES - ARTICLES & WHITE PAPERS' ]
 end
+
+def products 
+          [ 'AQUADRAIN', 'AKWASWELL', 'COREFLEX', 'ENVIROSHEET', 'LDC 60',
+                        'STRATASEAL HR', 'ULTRASEAL', 'VOLTEX DS', 'WATERSTOP RX' ]
+end

@@ -14,15 +14,19 @@ class PostsController < ApplicationController
   end
     
   def index
-    @categories = [ 'All Categories', '100 SERIES - GENERAL', '200 SERIES - APPLICATION & INSTALLATION',
+    @categories = [ 'ALL CATEGORIES', '100 SERIES - GENERAL', '200 SERIES - APPLICATION & INSTALLATION',
                     '300 SERIES - TESTING', '400 SERIES - CERTFICATIONS & APPROVALS',
-                    '500 SERIES - PRODUCT COMPARISONS', '600 SERIES - ARTICLES & WHITE PAPERS' ]    
+                    '500 SERIES - PRODUCT COMPARISONS', '600 SERIES - ARTICLES & WHITE PAPERS' ]  
+    @products = [ 'ALL PRODUCTS', 'AQUADRAIN', 'AKWASWELL', 'COREFLEX', 'ENVIROSHEET', 'LDC 60',
+                  'STRATASEAL HR', 'ULTRASEAL', 'VOLTEX DS', 'WATERSTOP RX' ]
+      
     @type_is = params[:type_is] # global variable required to setup the view
        
     @posts = Post.select_type(@type_is)
                  .select_category(params[:category])
+                 .select_product(params[:product])
                  .search(params[:search_criteria])
-                 .paginate(:page => params[:page], :per_page => 5).order('created_at desc')
+                 .paginate(:page => params[:page], :per_page => 500).order('title asc')
   end
 
   # GET /posts/1
