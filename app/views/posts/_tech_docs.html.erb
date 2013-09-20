@@ -15,14 +15,8 @@
 		<% @posts.each do |post| %>
 			<% post.body.length > 300 ? body = post.body[0..300].html_safe : body = post.body.html_safe %>
 				<tr>
-					<td class='span2'>		
-							<% if post.attachments.count > 0 %>
-								<% post.attachments.each_with_index do |attach| %>
-									<% if !attach.image.url.include?('missing.png') %>
-										<p><b><%= link_to image_tag('icon-pdf.png') + post.title, attach.image.url, :target => '_blank' %></b>										
-									<% end %>						
-								<% end %> 
-							<% end %>						
+					<td class='span2'>	
+							<%= post.title %>
 					</td>
 					<td><%= body %></td>
 					<td><b><%= post.category %></b></td>
