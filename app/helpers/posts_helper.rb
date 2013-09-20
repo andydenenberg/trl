@@ -20,6 +20,6 @@ def categories
 end
 
 def products 
-          [ 'GENERAL - ALL PRODUCTS', 'AQUADRAIN', 'AKWASWELL', 'COREFLEX', 'ENVIROSHEET', 'LDC 60',
+          [ 'GENERAL', 'AQUADRAIN', 'AKWASWELL', 'COREFLEX', 'ENVIROSHEET', 'LDC 60',
                         'STRATASEAL HR', 'ULTRASEAL', 'VOLTEX DS', 'WATERSTOP RX' ]
 end
